@@ -1,0 +1,30 @@
+{
+  "name": "searchonair-health",
+  "version": "1.0.0",
+  "description": "Sağlık mevzuatı, SGK Sağlık Uygulama Tebliği, hasta hakları ve resmî sağlık bilgilendirmelerinde arama ve kaynaklı cevaplar. Search on Air token'ı gerekir.",
+  "author": {
+    "name": "NorthRAG",
+    "url": "https://searchonair.com"
+  },
+  "homepage": "https://searchonair.com/install/health",
+  "repository": "https://github.com/NorthRAG/searchonair-plugins",
+  "keywords": [
+    "sağlık",
+    "sut",
+    "sgk",
+    "hasta hakları",
+    "mevzuat",
+    "türkçe",
+    "rag"
+  ],
+  "skills": "./skills/",
+  "mcpServers": "./codex.mcp.json",
+  "interface": {
+    "displayName": "Search on Air: Sağlık",
+    "shortDescription": "Sağlık mevzuatı, SUT ve hasta hakları kaynaklarında arama",
+    "longDescription": "Sağlık mevzuatı, SGK Sağlık Uygulama Tebliği, hasta hakları ve resmî sağlık bilgilendirmelerinde arama ve kaynaklı cevaplar. Search on Air token'ı gerekir.",
+    "developerName": "NorthRAG",
+    "category": "Research",
+    "websiteURL": "https://searchonair.com"
+  }
+}

@@ -1,0 +1,41 @@
+{
+  "name": "searchonair",
+  "interface": {
+    "displayName": "Search on Air"
+  },
+  "plugins": [
+    {
+      "name": "searchonair-lawyer",
+      "source": {
+        "source": "local",
+        "path": "./plugins/lawyer"
+      },
+      "policy": {
+        "installation": "AVAILABLE"
+      },
+      "category": "Research"
+    },
+    {
+      "name": "searchonair-accounting",
+      "source": {
+        "source": "local",
+        "path": "./plugins/accounting"
+      },
+      "policy": {
+        "installation": "AVAILABLE"
+      },
+      "category": "Research"
+    },
+    {
+      "name": "searchonair-health",
+      "source": {
+        "source": "local",
+        "path": "./plugins/health"
+      },
+      "policy": {
+        "installation": "AVAILABLE"
+      },
+      "category": "Research"
+    }
+  ]
+}

@@ -1,0 +1,31 @@
+{
+  "name": "searchonair-accounting",
+  "version": "1.0.0",
+  "description": "Vergi kanunları, GİB tebliğ/sirküler/özelgeleri ve muhasebe standartlarında arama, tam metin okuma ve maddeli atıflı cevaplar. Search on Air token'ı gerekir.",
+  "author": {
+    "name": "NorthRAG",
+    "url": "https://searchonair.com"
+  },
+  "homepage": "https://searchonair.com/install/accounting",
+  "repository": "https://github.com/NorthRAG/searchonair-plugins",
+  "keywords": [
+    "muhasebe",
+    "vergi",
+    "gib",
+    "vuk",
+    "kdv",
+    "mali müşavir",
+    "türkçe",
+    "rag"
+  ],
+  "skills": "./skills/",
+  "mcpServers": "./codex.mcp.json",
+  "interface": {
+    "displayName": "Search on Air: Muhasebe ve vergi",
+    "shortDescription": "Türk vergi mevzuatı ve GİB kaynaklarında kaynaklı cevaplar",
+    "longDescription": "Vergi kanunları, GİB tebliğ/sirküler/özelgeleri ve muhasebe standartlarında arama, tam metin okuma ve maddeli atıflı cevaplar. Search on Air token'ı gerekir.",
+    "developerName": "NorthRAG",
+    "category": "Research",
+    "websiteURL": "https://searchonair.com"
+  }
+}

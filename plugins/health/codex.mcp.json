@@ -1,0 +1,9 @@
+{
+  "mcpServers": {
+    "health": {
+      "type": "http",
+      "url": "https://api.searchonair.com/health/mcp",
+      "bearer_token_env_var": "SEARCHONAIR_HEALTH_TOKEN"
+    }
+  }
+}

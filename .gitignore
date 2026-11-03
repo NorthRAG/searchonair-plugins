@@ -1,0 +1,5 @@
+# Global gitignore .agents klasorunu disliyor; Codex marketplace dosyasi repoda olmali.
+!.agents
+!.agents/**
+.DS_Store
+__pycache__/

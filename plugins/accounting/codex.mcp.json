@@ -1,0 +1,9 @@
+{
+  "mcpServers": {
+    "accounting": {
+      "type": "http",
+      "url": "https://api.searchonair.com/accounting/mcp",
+      "bearer_token_env_var": "SEARCHONAIR_ACCOUNTING_TOKEN"
+    }
+  }
+}

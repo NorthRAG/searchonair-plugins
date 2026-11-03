@@ -1,0 +1,9 @@
+{
+  "mcpServers": {
+    "lawyer": {
+      "type": "http",
+      "url": "https://api.searchonair.com/lawyer/mcp",
+      "bearer_token_env_var": "SEARCHONAIR_LAWYER_TOKEN"
+    }
+  }
+}

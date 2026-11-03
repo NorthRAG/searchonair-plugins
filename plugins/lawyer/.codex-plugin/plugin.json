@@ -1,0 +1,30 @@
+{
+  "name": "searchonair-lawyer",
+  "version": "1.0.0",
+  "description": "Yargıtay, Danıştay, UYAP emsal ve Anayasa Mahkemesi kararlarında (11M+) anlamsal ve lafzi arama, tam metin okuma ve künyeli atıflı cevaplar. Search on Air token'ı gerekir.",
+  "author": {
+    "name": "NorthRAG",
+    "url": "https://searchonair.com"
+  },
+  "homepage": "https://searchonair.com/install/lawyer",
+  "repository": "https://github.com/NorthRAG/searchonair-plugins",
+  "keywords": [
+    "hukuk",
+    "içtihat",
+    "yargıtay",
+    "danıştay",
+    "anayasa mahkemesi",
+    "türkçe",
+    "rag"
+  ],
+  "skills": "./skills/",
+  "mcpServers": "./codex.mcp.json",
+  "interface": {
+    "displayName": "Search on Air: Hukuk",
+    "shortDescription": "Türk mahkeme kararlarında arama ve künyeli atıf",
+    "longDescription": "Yargıtay, Danıştay, UYAP emsal ve Anayasa Mahkemesi kararlarında (11M+) anlamsal ve lafzi arama, tam metin okuma ve künyeli atıflı cevaplar. Search on Air token'ı gerekir.",
+    "developerName": "NorthRAG",
+    "category": "Research",
+    "websiteURL": "https://searchonair.com"
+  }
+}

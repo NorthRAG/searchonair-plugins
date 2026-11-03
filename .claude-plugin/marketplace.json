@@ -1,0 +1,59 @@
+{
+  "name": "searchonair",
+  "description": "Search on Air: Türkçe kaynaklar üzerinde RAG araçları",
+  "owner": {
+    "name": "NorthRAG",
+    "url": "https://searchonair.com"
+  },
+  "plugins": [
+    {
+      "name": "searchonair-lawyer",
+      "source": "./plugins/lawyer",
+      "description": "Yargıtay, Danıştay, UYAP emsal ve Anayasa Mahkemesi kararlarında (11M+) anlamsal ve lafzi arama, tam metin okuma ve künyeli atıflı cevaplar. Search on Air token'ı gerekir.",
+      "category": "research",
+      "keywords": [
+        "hukuk",
+        "içtihat",
+        "yargıtay",
+        "danıştay",
+        "anayasa mahkemesi",
+        "türkçe",
+        "rag"
+      ],
+      "homepage": "https://searchonair.com/install/lawyer"
+    },
+    {
+      "name": "searchonair-accounting",
+      "source": "./plugins/accounting",
+      "description": "Vergi kanunları, GİB tebliğ/sirküler/özelgeleri ve muhasebe standartlarında arama, tam metin okuma ve maddeli atıflı cevaplar. Search on Air token'ı gerekir.",
+      "category": "research",
+      "keywords": [
+        "muhasebe",
+        "vergi",
+        "gib",
+        "vuk",
+        "kdv",
+        "mali müşavir",
+        "türkçe",
+        "rag"
+      ],
+      "homepage": "https://searchonair.com/install/accounting"
+    },
+    {
+      "name": "searchonair-health",
+      "source": "./plugins/health",
+      "description": "Sağlık mevzuatı, SGK Sağlık Uygulama Tebliği, hasta hakları ve resmî sağlık bilgilendirmelerinde arama ve kaynaklı cevaplar. Search on Air token'ı gerekir.",
+      "category": "research",
+      "keywords": [
+        "sağlık",
+        "sut",
+        "sgk",
+        "hasta hakları",
+        "mevzuat",
+        "türkçe",
+        "rag"
+      ],
+      "homepage": "https://searchonair.com/install/health"
+    }
+  ]
+}

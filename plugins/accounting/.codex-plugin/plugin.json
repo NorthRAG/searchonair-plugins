@@ -1,9 +1,9 @@
 {
   "name": "searchonair-accounting",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Search Turkish tax laws, Revenue Administration (GİB) communiqués, circulars and rulings, and accounting standards; read full texts and get answers that cite the exact article. Requires a Search on Air token.",
   "author": {
-    "name": "NorthRAG",
+    "name": "Search on Air",
     "url": "https://searchonair.com"
   },
   "homepage": "https://searchonair.com/install/accounting",
@@ -23,7 +23,7 @@
     "displayName": "Search on Air: Turkish Accounting & Tax",
     "shortDescription": "Sourced answers from Turkish tax law and Revenue Administration guidance",
     "longDescription": "Search Turkish tax laws, Revenue Administration (GİB) communiqués, circulars and rulings, and accounting standards; read full texts and get answers that cite the exact article. Requires a Search on Air token.",
-    "developerName": "NorthRAG",
+    "developerName": "Search on Air",
     "category": "Research",
     "websiteURL": "https://searchonair.com",
     "defaultPrompt": [

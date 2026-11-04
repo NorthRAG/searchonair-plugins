@@ -1,9 +1,9 @@
 {
   "name": "searchonair-lawyer",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Semantic and keyword search over 11M+ Turkish court decisions (Court of Cassation, Council of State, regional and first-instance courts, Constitutional Court), full-text reading and answers with exact case citations. Requires a Search on Air token.",
   "author": {
-    "name": "NorthRAG",
+    "name": "Search on Air",
     "url": "https://searchonair.com"
   },
   "homepage": "https://searchonair.com/install/lawyer",
@@ -23,7 +23,7 @@
     "displayName": "Search on Air: Turkish Law",
     "shortDescription": "Search Turkish court decisions and cite them precisely",
     "longDescription": "Semantic and keyword search over 11M+ Turkish court decisions (Court of Cassation, Council of State, regional and first-instance courts, Constitutional Court), full-text reading and answers with exact case citations. Requires a Search on Air token.",
-    "developerName": "NorthRAG",
+    "developerName": "Search on Air",
     "category": "Research",
     "websiteURL": "https://searchonair.com",
     "defaultPrompt": [

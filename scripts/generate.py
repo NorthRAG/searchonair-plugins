@@ -12,8 +12,8 @@ ROOT = pathlib.Path(__file__).resolve().parent.parent
 API = "https://api.searchonair.com"
 SITE = "https://searchonair.com"
 REPO = "https://github.com/SearchOnAir/plugins"
-VERSION = "1.0.1"
-OWNER = {"name": "NorthRAG", "url": SITE}
+VERSION = "1.0.2"
+OWNER = {"name": "Search on Air", "url": SITE}
 
 DOMAINS = {
     "lawyer": {

@@ -1,9 +1,9 @@
 {
   "name": "searchonair-health",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Search Turkish health legislation, the Social Security Institution's Health Implementation Communiqué (SUT), patient-rights regulations and official public health guidance, with answers that cite the exact article. Not medical advice. Requires a Search on Air token.",
   "author": {
-    "name": "NorthRAG",
+    "name": "Search on Air",
     "url": "https://searchonair.com"
   },
   "homepage": "https://searchonair.com/install/health",
@@ -23,7 +23,7 @@
     "displayName": "Search on Air: Turkish Health Regulations",
     "shortDescription": "Search Turkish health regulations, SGK coverage rules and patient rights",
     "longDescription": "Search Turkish health legislation, the Social Security Institution's Health Implementation Communiqué (SUT), patient-rights regulations and official public health guidance, with answers that cite the exact article. Not medical advice. Requires a Search on Air token.",
-    "developerName": "NorthRAG",
+    "developerName": "Search on Air",
     "category": "Research",
     "websiteURL": "https://searchonair.com",
     "defaultPrompt": [

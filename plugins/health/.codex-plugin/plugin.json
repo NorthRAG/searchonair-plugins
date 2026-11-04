@@ -1,30 +1,35 @@
 {
   "name": "searchonair-health",
-  "version": "1.0.0",
-  "description": "Sağlık mevzuatı, SGK Sağlık Uygulama Tebliği, hasta hakları ve resmî sağlık bilgilendirmelerinde arama ve kaynaklı cevaplar. Search on Air token'ı gerekir.",
+  "version": "1.0.1",
+  "description": "Search Turkish health legislation, the Social Security Institution's Health Implementation Communiqué (SUT), patient-rights regulations and official public health guidance, with answers that cite the exact article. Not medical advice. Requires a Search on Air token.",
   "author": {
     "name": "NorthRAG",
     "url": "https://searchonair.com"
   },
   "homepage": "https://searchonair.com/install/health",
-  "repository": "https://github.com/NorthRAG/searchonair-plugins",
+  "repository": "https://github.com/SearchOnAir/plugins",
   "keywords": [
-    "sağlık",
-    "sut",
-    "sgk",
-    "hasta hakları",
-    "mevzuat",
-    "türkçe",
+    "health",
+    "healthcare regulation",
+    "patient rights",
+    "insurance",
+    "turkey",
+    "turkish",
     "rag"
   ],
   "skills": "./skills/",
   "mcpServers": "./codex.mcp.json",
   "interface": {
-    "displayName": "Search on Air: Sağlık",
-    "shortDescription": "Sağlık mevzuatı, SUT ve hasta hakları kaynaklarında arama",
-    "longDescription": "Sağlık mevzuatı, SGK Sağlık Uygulama Tebliği, hasta hakları ve resmî sağlık bilgilendirmelerinde arama ve kaynaklı cevaplar. Search on Air token'ı gerekir.",
+    "displayName": "Search on Air: Turkish Health Regulations",
+    "shortDescription": "Search Turkish health regulations, SGK coverage rules and patient rights",
+    "longDescription": "Search Turkish health legislation, the Social Security Institution's Health Implementation Communiqué (SUT), patient-rights regulations and official public health guidance, with answers that cite the exact article. Not medical advice. Requires a Search on Air token.",
     "developerName": "NorthRAG",
     "category": "Research",
-    "websiteURL": "https://searchonair.com"
+    "websiteURL": "https://searchonair.com",
+    "defaultPrompt": [
+      "Can a patient get a copy of their hospital medical records?",
+      "How often can I change my family physician?",
+      "What co-payment applies to prescription drugs for retirees?"
+    ]
   }
 }

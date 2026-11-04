@@ -1,80 +1,88 @@
-# Search on Air plugin'leri
+# Search on Air plugins
 
-Claude Code ve Codex için Search on Air plugin'leri. Her plugin bir veri setine bağlanır ve
-o veri setinin MCP araçlarını (`search`, `get_document`, `ask`, `list_sources`) ve bir
-araştırma skill'ini getirir.
+Claude Code and Codex plugins for [Search on Air](https://searchonair.com): retrieval tools
+over Turkish legal, tax and health sources. Each plugin connects to one dataset and brings
+its MCP tools (`search`, `get_document`, `ask`, `list_sources`) plus a research skill that
+tells the model how to use them and how to cite.
 
-| plugin | veri seti | MCP adresi |
+| plugin | dataset | MCP endpoint |
 |---|---|---|
-| `searchonair-lawyer` | Hukuk: Yargıtay, Danıştay, UYAP emsal, Anayasa Mahkemesi kararları | `https://api.searchonair.com/lawyer/mcp` |
-| `searchonair-accounting` | Muhasebe ve vergi: vergi kanunları, GİB tebliğ/sirküler/özelge, standartlar | `https://api.searchonair.com/accounting/mcp` |
-| `searchonair-health` | Sağlık: sağlık mevzuatı, SUT, hasta hakları | `https://api.searchonair.com/health/mcp` |
+| `searchonair-lawyer` | Turkish court decisions: Court of Cassation, Council of State, regional and first-instance courts, Constitutional Court (11M+) | `https://api.searchonair.com/lawyer/mcp` |
+| `searchonair-accounting` | Turkish tax laws, Revenue Administration (GİB) communiqués, circulars and rulings, accounting standards | `https://api.searchonair.com/accounting/mcp` |
+| `searchonair-health` | Turkish health legislation, SGK Health Implementation Communiqué (SUT), patient rights | `https://api.searchonair.com/health/mcp` |
 
-Kullanmak için bir **Search on Air token'ı** gerekir: https://searchonair.com adresinde kayıt
-olun. Kayıtta seçtiğiniz veri seti için ücretsiz bir token (günde 5 soru, 50 arama)
-oluşturulur. Token'lar veri setine bağlıdır: her plugin kendi veri setinin token'ını ister.
+You need a **Search on Air token**. Sign up at https://searchonair.com: a free token for the
+dataset you pick is created on sign-up (5 questions and 50 searches per day). Tokens are bound
+to one dataset, so each plugin needs the token for its own dataset.
 
 ## Claude Code
 
 ```
-/plugin marketplace add NorthRAG/searchonair-plugins
+/plugin marketplace add SearchOnAir/plugins
 /plugin install searchonair-lawyer@searchonair
 ```
 
-Kurulumda Claude Code token'ı sorar ve işletim sisteminin güvenli deposunda saklar. Tek
-adımda: `/plugin install searchonair-lawyer --marketplace NorthRAG/searchonair-plugins`.
+Claude Code asks for the token during installation and keeps it in the operating system's
+secure credential store. One-step alternative:
+`/plugin install searchonair-lawyer --marketplace SearchOnAir/plugins`.
 
-Token'ı değiştirmek (yeniledikten sonra): `/plugin configure searchonair-lawyer@searchonair`,
-sonra Claude Code'u yeniden başlatın.
+To change the token (for example after rotating it):
+`/plugin configure searchonair-lawyer@searchonair`, then restart Claude Code.
 
-Skill'ler `/searchonair-lawyer:legal-research`, `/searchonair-accounting:tax-research`,
-`/searchonair-health:health-regulation-research` olarak da çağrılabilir; Claude onları ilgili
-sorularda kendisi de kullanır.
+The skills can also be invoked directly: `/searchonair-lawyer:legal-research`,
+`/searchonair-accounting:tax-research`, `/searchonair-health:health-regulation-research`.
+Claude also uses them on its own for relevant questions.
 
 ## Codex
 
-Codex kurulum sırasında token sormuyor; token bir ortam değişkeninden okunur:
+Codex does not prompt for secrets at install time; the token is read from an environment
+variable:
 
 ```bash
-# ~/.zshrc ya da ~/.bashrc
+# ~/.zshrc or ~/.bashrc
 export SEARCHONAIR_LAWYER_TOKEN=soa_...
 ```
 
 ```bash
-codex plugin marketplace add NorthRAG/searchonair-plugins
+codex plugin marketplace add SearchOnAir/plugins
 codex plugin add searchonair-lawyer@searchonair
 ```
 
-Değişkenler: `SEARCHONAIR_LAWYER_TOKEN`, `SEARCHONAIR_ACCOUNTING_TOKEN`,
-`SEARCHONAIR_HEALTH_TOKEN`. Değişikliğin geçerli olması için Codex'i yeni bir terminalde
-yeniden başlatın.
+Variables: `SEARCHONAIR_LAWYER_TOKEN`, `SEARCHONAIR_ACCOUNTING_TOKEN`,
+`SEARCHONAIR_HEALTH_TOKEN`. Restart Codex in a new terminal for changes to take effect.
 
-## Kotalar
+## Quotas
 
-| plan | fiyat | soru (`ask`) / gün | arama + belge okuma / gün |
+| plan | price | questions (`ask`) / day | searches + document reads / day |
 |---|---:|---:|---:|
 | Free | $0 | 5 | 50 |
-| Basic | $10/ay | 50 | 500 |
-| Pro | $40/ay | 250 | 2.500 |
-| Enterprise | $100/ay | 2.000 | 20.000 |
+| Basic | $10/month | 50 | 500 |
+| Pro | $40/month | 250 | 2,500 |
+| Enterprise | $100/month | 2,000 | 20,000 |
 
-`search` ve `get_document` arama kotasından, `ask` (sunucuda üretilen atıflı cevap) soru
-kotasından düşer. Kotalar her gece yarısı (İstanbul saati) sıfırlanır. Her aracın cevabının
-sonunda o günkü kullanım yazar.
+`search` and `get_document` count against the search quota; `ask` (a cited answer generated
+on the server) counts against the question quota. Quotas reset every day at midnight
+(Istanbul time). Every tool result ends with that day's usage.
 
-## Gizlilik
+## Languages
 
-Araç çağrılarındaki sorgular ve sorular Search on Air API'sine gönderilir ve hizmet
-kalitesini ölçmek için kaydedilir. Kişisel veri, hasta bilgisi ya da müvekkil sırrı
-içeren metinleri sorguya koymayın.
+The sources are Turkish, so the models search them in Turkish and quote citations in the
+original Turkish. You can ask in any language; answers follow your language.
 
-## Geliştirme
+## Privacy
 
-Manifestler tek kaynaktan üretilir; adresi ya da sürümü değiştirmek için JSON dosyalarını
-elle düzenlemek yerine üretici betiği kullanın (bkz. `scripts/generate.py`). Sürüm
-artırılmazsa Claude Code kullanıcıları güncellemeyi almaz.
+Queries and questions sent through the tools go to the Search on Air API and are logged to
+measure service quality. Do not put personal data, patient information or privileged client
+information into queries.
+
+## Development
+
+The manifests are generated from a single source. Do not edit the JSON files by hand; change
+`scripts/generate.py`, bump `VERSION` (Claude Code only delivers updates when the version
+changes) and regenerate:
 
 ```bash
 python3 scripts/generate.py
-claude plugin validate .            # Claude Code doğrulaması
+claude plugin validate .
+for p in plugins/*; do claude plugin validate "$p"; done
 ```

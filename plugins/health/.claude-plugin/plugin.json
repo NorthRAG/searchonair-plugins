@@ -1,27 +1,27 @@
 {
   "name": "searchonair-health",
-  "version": "1.0.0",
-  "description": "Sağlık mevzuatı, SGK Sağlık Uygulama Tebliği, hasta hakları ve resmî sağlık bilgilendirmelerinde arama ve kaynaklı cevaplar. Search on Air token'ı gerekir.",
+  "version": "1.0.1",
+  "description": "Search Turkish health legislation, the Social Security Institution's Health Implementation Communiqué (SUT), patient-rights regulations and official public health guidance, with answers that cite the exact article. Not medical advice. Requires a Search on Air token.",
   "author": {
     "name": "NorthRAG",
     "url": "https://searchonair.com"
   },
   "homepage": "https://searchonair.com/install/health",
-  "repository": "https://github.com/NorthRAG/searchonair-plugins",
+  "repository": "https://github.com/SearchOnAir/plugins",
   "keywords": [
-    "sağlık",
-    "sut",
-    "sgk",
-    "hasta hakları",
-    "mevzuat",
-    "türkçe",
+    "health",
+    "healthcare regulation",
+    "patient rights",
+    "insurance",
+    "turkey",
+    "turkish",
     "rag"
   ],
   "userConfig": {
     "api_token": {
       "type": "string",
       "title": "Search on Air token",
-      "description": "https://searchonair.com/dashboard adresinden aldığınız, soa_ ile başlayan Sağlık token'ı.",
+      "description": "Your Health token (starts with soa_). Get one at https://searchonair.com/dashboard",
       "required": true,
       "sensitive": true
     }

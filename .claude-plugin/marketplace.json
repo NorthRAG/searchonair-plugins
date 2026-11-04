@@ -1,6 +1,6 @@
 {
   "name": "searchonair",
-  "description": "Search on Air: Türkçe kaynaklar üzerinde RAG araçları",
+  "description": "Search on Air: research tools over Turkish legal, tax and health sources",
   "owner": {
     "name": "NorthRAG",
     "url": "https://searchonair.com"
@@ -9,15 +9,15 @@
     {
       "name": "searchonair-lawyer",
       "source": "./plugins/lawyer",
-      "description": "Yargıtay, Danıştay, UYAP emsal ve Anayasa Mahkemesi kararlarında (11M+) anlamsal ve lafzi arama, tam metin okuma ve künyeli atıflı cevaplar. Search on Air token'ı gerekir.",
+      "description": "Semantic and keyword search over 11M+ Turkish court decisions (Court of Cassation, Council of State, regional and first-instance courts, Constitutional Court), full-text reading and answers with exact case citations. Requires a Search on Air token.",
       "category": "research",
       "keywords": [
-        "hukuk",
-        "içtihat",
-        "yargıtay",
-        "danıştay",
-        "anayasa mahkemesi",
-        "türkçe",
+        "law",
+        "legal research",
+        "case law",
+        "turkey",
+        "turkish",
+        "court decisions",
         "rag"
       ],
       "homepage": "https://searchonair.com/install/lawyer"
@@ -25,16 +25,15 @@
     {
       "name": "searchonair-accounting",
       "source": "./plugins/accounting",
-      "description": "Vergi kanunları, GİB tebliğ/sirküler/özelgeleri ve muhasebe standartlarında arama, tam metin okuma ve maddeli atıflı cevaplar. Search on Air token'ı gerekir.",
+      "description": "Search Turkish tax laws, Revenue Administration (GİB) communiqués, circulars and rulings, and accounting standards; read full texts and get answers that cite the exact article. Requires a Search on Air token.",
       "category": "research",
       "keywords": [
-        "muhasebe",
-        "vergi",
-        "gib",
-        "vuk",
-        "kdv",
-        "mali müşavir",
-        "türkçe",
+        "accounting",
+        "tax",
+        "vat",
+        "e-invoice",
+        "turkey",
+        "turkish",
         "rag"
       ],
       "homepage": "https://searchonair.com/install/accounting"
@@ -42,15 +41,15 @@
     {
       "name": "searchonair-health",
       "source": "./plugins/health",
-      "description": "Sağlık mevzuatı, SGK Sağlık Uygulama Tebliği, hasta hakları ve resmî sağlık bilgilendirmelerinde arama ve kaynaklı cevaplar. Search on Air token'ı gerekir.",
+      "description": "Search Turkish health legislation, the Social Security Institution's Health Implementation Communiqué (SUT), patient-rights regulations and official public health guidance, with answers that cite the exact article. Not medical advice. Requires a Search on Air token.",
       "category": "research",
       "keywords": [
-        "sağlık",
-        "sut",
-        "sgk",
-        "hasta hakları",
-        "mevzuat",
-        "türkçe",
+        "health",
+        "healthcare regulation",
+        "patient rights",
+        "insurance",
+        "turkey",
+        "turkish",
         "rag"
       ],
       "homepage": "https://searchonair.com/install/health"

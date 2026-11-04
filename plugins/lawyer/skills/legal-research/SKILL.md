@@ -1,45 +1,52 @@
 ---
 name: legal-research
-description: Türk hukukuyla ilgili bir soru, dava, içtihat ya da mahkeme kararı araştırması istendiğinde kullan. Search on Air hukuk araçlarıyla (search, get_document, ask) Yargıtay, Danıştay, UYAP emsal ve Anayasa Mahkemesi kararlarını bulur, okur ve künyeyle atıf yapar.
+description: Use when the user asks a question about Turkish law, a legal dispute, case law (içtihat) or a Turkish court decision. Finds, reads and cites decisions of the Court of Cassation (Yargıtay), Council of State (Danıştay), regional and first-instance courts (UYAP emsal) and the Constitutional Court (Anayasa Mahkemesi) with the Search on Air tools (search, get_document, ask).
 ---
 
-# Türk içtihat araştırması (Search on Air)
+# Turkish case-law research (Search on Air)
 
-Bu plugin, 11 milyonu aşkın Türk mahkeme kararını içeren Search on Air hukuk veri setine
-bağlanır. Araçlar `lawyer` MCP sunucusundadır.
+This plugin connects to the Search on Air law dataset: more than 11 million Turkish court
+decisions. The tools live on the `lawyer` MCP server. The decisions are in Turkish, so write
+search queries in Turkish legal language; answer in the user's language.
 
-| araç | ne zaman | kota |
+| tool | when | quota |
 |---|---|---|
-| `search` | Her araştırmanın ilk adımı. Birkaç kez, farklı terimlerle çağır. | arama |
-| `get_document` | Önemli görünen kararın tam metnini okumak için. Uzunsa `offset` ile devam et. | arama |
-| `ask` | Kullanıcı hızlı, hazır ve atıflı bir cevap istiyorsa. Sunucuda LLM çalışır. | soru (düşük) |
-| `list_sources` | Kaynakların kapsamını görmek için. | yok |
+| `search` | First step of every research task. Call it several times with different terms. | search |
+| `get_document` | Read the full text of a decision that looks important. Use `offset` to continue long texts. | search |
+| `ask` | The user wants a quick, ready-made answer with citations. Runs an LLM on the server. | ask (lower) |
+| `list_sources` | See what each source covers. | none |
 
-## Akış
+Sources: `yargitay` (Court of Cassation: civil and criminal chambers), `danistay` (Council of
+State: administrative and tax), `emsal` (UYAP: regional appeal and first-instance courts,
+mostly commercial), `aym_bb` (Constitutional Court individual applications: fundamental
+rights), `aym_norm` (Constitutional Court review of statutes).
 
-1. **Soruyu ayrıştır.** Hangi hukuk dalı? Özel hukuk mu (Yargıtay hukuk daireleri + emsal),
-   idare/vergi mi (Danıştay), temel hak ihlali mi (AYM bireysel başvuru), kanunun Anayasa'ya
-   uygunluğu mu (AYM norm denetimi)? Tarih kısıtı var mı?
-2. **Ara.** `search` sorgusunu kararlarda geçecek hukuki terimlerle yaz: "kıdem tazminatı haklı
-   fesih ücretin ödenmemesi" gibi. Kanun/madde numarası, esas/karar numarası gibi lafzi
-   ifadeler için `mode: "hybrid"` ya da `"sparse"` kullan. Kaynak ve yıl filtrelerini yalnızca
-   soru gerektiriyorsa koy. İlk sonuçlar zayıfsa eş anlamlı terimlerle ya da filtresiz tekrar ara.
-3. **Oku.** Cevabı taşıyacak 2-4 kararı `get_document` ile aç. Arama parçası kararın sonucunu
-   göstermeyebilir; hükmü ve gerekçeyi tam metinden doğrula.
-4. **Yaz.** Önce kısa cevap, sonra gerekçe. Her tespitin yanına kararın künyesini aynen yaz
-   (ör. "Yargıtay 9. Hukuk Dairesi, E. 2015/4260, K. 2015/11423, T. 12.03.2015"). Kararlar
-   arasında görüş ayrılığı varsa ikisini de tarihleriyle göster; daire ve iş bölümü yıllar
-   içinde değişti, eski kararları buna göre değerlendir.
-5. **Sınırla.** Kararlarda olmayan bilgiyi kararlara dayandırma; genel hukuk bilgini ayrıca ve
-   açıkça belirt. Sonda bunun hukuki danışmanlık olmadığını, somut olay için avukata
-   danışılması gerektiğini söyle.
+## Workflow
 
-## Hatalar
+1. **Frame the question.** Which branch of law? Private law (Yargıtay civil chambers + emsal),
+   administrative or tax (Danıştay), a fundamental-rights violation (aym_bb) or the
+   constitutionality of a statute (aym_norm)? Is there a date constraint?
+2. **Search.** Phrase `search` queries with the Turkish legal terms a decision would use, e.g.
+   "kıdem tazminatı haklı fesih ücretin ödenmemesi". For statute or article numbers and docket
+   numbers (esas/karar no) use `mode: "hybrid"` or `"sparse"`. Only add source and year filters
+   when the question calls for them. If the first results are weak, retry with synonyms or
+   without filters.
+3. **Read.** Open the 2-4 decisions that carry the answer with `get_document`. A search snippet
+   may not show the outcome; confirm the holding and reasoning in the full text.
+4. **Write.** Give the short answer first, then the reasoning. After every finding, cite the
+   decision exactly as the tool labels it (e.g. "Yargıtay 9. Hukuk Dairesi, E. 2015/4260,
+   K. 2015/11423, T. 12.03.2015"). If decisions conflict, show both with their dates; chamber
+   names and their division of work changed over the years, so weigh older decisions accordingly.
+5. **Stay within the sources.** Do not attribute to a decision anything it does not say; mark
+   general legal knowledge as such. End by noting that this is not legal advice and that a
+   lawyer should be consulted for the specific case.
 
-- **Token yok/geçersiz:** Araç ne yapılacağını söyler. Kullanıcıya https://searchonair.com/dashboard
-  adresinden token almasını, Claude Code'da `/plugin configure searchonair-lawyer@searchonair`
-  ile girmesini (Codex'te `SEARCHONAIR_LAWYER_TOKEN` ortam değişkeni) ilet.
-- **Kota doldu:** Günlük hak gece yarısı (İstanbul saati) sıfırlanır. Kullanıcıya bildir;
-  `ask` kotası bittiyse `search` + `get_document` ile devam edebilirsin.
-- **Sonuç yok:** Sorguyu genelleştir, filtreleri kaldır, eş anlamlı terim dene. Hâlâ yoksa
-  bunu açıkça söyle; karar uydurma.
+## Errors
+
+- **Missing or invalid token:** the tool explains what to do. Tell the user to get a token at
+  https://searchonair.com/dashboard and enter it with `/plugin configure searchonair-lawyer@searchonair`
+  in Claude Code (or the `SEARCHONAIR_LAWYER_TOKEN` environment variable in Codex).
+- **Quota reached:** daily quotas reset at midnight (Istanbul time). Tell the user; if only the
+  `ask` quota is used up, continue with `search` + `get_document`.
+- **No results:** broaden the query, remove filters, try synonyms. If there is still nothing,
+  say so plainly. Never invent decisions.

@@ -1,31 +1,35 @@
 {
   "name": "searchonair-accounting",
-  "version": "1.0.0",
-  "description": "Vergi kanunları, GİB tebliğ/sirküler/özelgeleri ve muhasebe standartlarında arama, tam metin okuma ve maddeli atıflı cevaplar. Search on Air token'ı gerekir.",
+  "version": "1.0.1",
+  "description": "Search Turkish tax laws, Revenue Administration (GİB) communiqués, circulars and rulings, and accounting standards; read full texts and get answers that cite the exact article. Requires a Search on Air token.",
   "author": {
     "name": "NorthRAG",
     "url": "https://searchonair.com"
   },
   "homepage": "https://searchonair.com/install/accounting",
-  "repository": "https://github.com/NorthRAG/searchonair-plugins",
+  "repository": "https://github.com/SearchOnAir/plugins",
   "keywords": [
-    "muhasebe",
-    "vergi",
-    "gib",
-    "vuk",
-    "kdv",
-    "mali müşavir",
-    "türkçe",
+    "accounting",
+    "tax",
+    "vat",
+    "e-invoice",
+    "turkey",
+    "turkish",
     "rag"
   ],
   "skills": "./skills/",
   "mcpServers": "./codex.mcp.json",
   "interface": {
-    "displayName": "Search on Air: Muhasebe ve vergi",
-    "shortDescription": "Türk vergi mevzuatı ve GİB kaynaklarında kaynaklı cevaplar",
-    "longDescription": "Vergi kanunları, GİB tebliğ/sirküler/özelgeleri ve muhasebe standartlarında arama, tam metin okuma ve maddeli atıflı cevaplar. Search on Air token'ı gerekir.",
+    "displayName": "Search on Air: Turkish Accounting & Tax",
+    "shortDescription": "Sourced answers from Turkish tax law and Revenue Administration guidance",
+    "longDescription": "Search Turkish tax laws, Revenue Administration (GİB) communiqués, circulars and rulings, and accounting standards; read full texts and get answers that cite the exact article. Requires a Search on Air token.",
     "developerName": "NorthRAG",
     "category": "Research",
-    "websiteURL": "https://searchonair.com"
+    "websiteURL": "https://searchonair.com",
+    "defaultPrompt": [
+      "Within how many days must an invoice be issued after delivery?",
+      "Can VAT on a late-arriving purchase invoice still be deducted?",
+      "Who must switch to e-Invoice in 2026?"
+    ]
   }
 }

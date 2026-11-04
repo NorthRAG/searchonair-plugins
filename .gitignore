@@ -1,4 +1,4 @@
-# Global gitignore .agents klasorunu disliyor; Codex marketplace dosyasi repoda olmali.
+# Some global gitignores exclude .agents; the Codex marketplace file must be tracked.
 !.agents
 !.agents/**
 .DS_Store

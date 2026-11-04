@@ -1,40 +1,43 @@
 ---
 name: tax-research
-description: Türk vergi ya da muhasebe mevzuatıyla ilgili bir soru sorulduğunda kullan (VUK, KDV, gelir/kurumlar vergisi, e-fatura, GİB tebliğ/sirküler/özelgeleri, muhasebe standartları). Search on Air muhasebe araçlarıyla (search, get_document, ask) ilgili mevzuatı bulur, okur ve madde numarasıyla atıf yapar.
+description: Use when the user asks about Turkish tax or accounting rules (Tax Procedure Law VUK, VAT/KDV, income and corporate tax, e-invoice/e-archive, Revenue Administration (GİB) communiqués, circulars and rulings, accounting standards). Finds, reads and cites the relevant legislation article by article with the Search on Air tools (search, get_document, ask).
 ---
 
-# Vergi ve muhasebe mevzuatı araştırması (Search on Air)
+# Turkish tax and accounting research (Search on Air)
 
-Bu plugin, Search on Air muhasebe ve vergi veri setine bağlanır: vergi kanunları, GİB
-tebliğ/sirküler/özelgeleri ve muhasebe standartları. Araçlar `accounting` MCP sunucusundadır.
+This plugin connects to the Search on Air accounting and tax dataset: Turkish tax laws,
+Revenue Administration (GİB) communiqués, circulars and rulings, and accounting standards.
+The tools live on the `accounting` MCP server. The sources are in Turkish, so write search
+queries in Turkish legislative language; answer in the user's language.
 
-| araç | ne zaman | kota |
+| tool | when | quota |
 |---|---|---|
-| `search` | Her araştırmanın ilk adımı. Birkaç kez, farklı terimlerle çağır. | arama |
-| `get_document` | İlgili kanun maddesini/tebliği tam okumak için. Uzunsa `offset` ile devam et. | arama |
-| `ask` | Kullanıcı hızlı, hazır ve atıflı bir cevap istiyorsa. | soru (düşük) |
-| `list_sources` | Kaynakların kapsamını görmek için. | yok |
+| `search` | First step of every research task. Call it several times with different terms. | search |
+| `get_document` | Read the full article or communiqué. Use `offset` to continue long texts. | search |
+| `ask` | The user wants a quick, ready-made answer with citations. | ask (lower) |
+| `list_sources` | See what each source covers. | none |
 
-## Akış
+## Workflow
 
-1. **Konuyu belirle:** hangi vergi/kanun (VUK, KDVK, GVK, KVK...), hangi dönem? Mükellefin
-   türü (gerçek kişi, şirket, basit usul) önemli mi?
-2. **Ara:** mevzuat diliyle sorgula ("faturanın düzenlenme süresi", "indirim hakkının
-   kullanılma zamanı"). Kanun ve madde numarası geçiyorsa `mode: "hybrid"`. Kanun metni ile
-   uygulamayı açıklayan tebliği birlikte bul.
-3. **Oku:** cevabı taşıyan maddeleri `get_document` ile aç; istisnaları ve yürürlük
-   tarihlerini kontrol et.
-4. **Yaz:** önce kısa cevap, sonra gerekçe. Her tespitte belgenin adını ve maddesini ver
-   ("213 sayılı VUK md. 231/5"). **Tutar, oran ve hadler yıl yıl değişir:** hangi tarihli
-   metne dayandığını yaz, güncelliğinin doğrulanması gerektiğini belirt.
-5. **Sınırla:** belgelerde olmayanı mevzuata dayandırma. Sonda bunun genel bilgi olduğunu ve
-   somut durum için mali müşavire danışılması gerektiğini söyle.
+1. **Frame the question:** which tax or law (VUK, KDVK, GVK, KVK...), which period? Does the
+   taxpayer type matter (individual, company, simplified-method taxpayer)?
+2. **Search** in legislative Turkish ("faturanın düzenlenme süresi", "indirim hakkının
+   kullanılma zamanı"). Use `mode: "hybrid"` when a law or article number is involved. Find
+   both the statute and the communiqué that explains how it is applied.
+3. **Read** the articles that carry the answer with `get_document`; check exceptions and
+   effective dates.
+4. **Write:** short answer first, then the reasoning. Cite the document and article for every
+   finding ("213 sayılı VUK md. 231/5"). **Amounts, rates and thresholds change every year:**
+   state which dated text you relied on and that it should be checked for currency.
+5. **Stay within the sources.** End by noting that this is general information, not
+   professional advice, and that a certified accountant (mali müşavir) should be consulted for
+   the specific case.
 
-## Hatalar
+## Errors
 
-- **Token yok/geçersiz:** https://searchonair.com/dashboard adresinden token alınmalı; Claude
-  Code'da `/plugin configure searchonair-accounting@searchonair`, Codex'te
-  `SEARCHONAIR_ACCOUNTING_TOKEN` ortam değişkeni.
-- **Veri seti henüz yüklenmedi:** araç bunu söyler; kullanıcıya bildir, mevzuat uydurma.
-- **Kota doldu:** günlük hak gece yarısı (İstanbul saati) sıfırlanır; `ask` bittiyse
-  `search` + `get_document` ile devam edilebilir.
+- **Missing or invalid token:** get a token at https://searchonair.com/dashboard; enter it with
+  `/plugin configure searchonair-accounting@searchonair` in Claude Code, or set
+  `SEARCHONAIR_ACCOUNTING_TOKEN` for Codex.
+- **Dataset not loaded yet:** the tool says so. Tell the user; never make up legislation.
+- **Quota reached:** daily quotas reset at midnight (Istanbul time); if only the `ask` quota
+  is used up, continue with `search` + `get_document`.

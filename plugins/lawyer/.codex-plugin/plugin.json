@@ -1,30 +1,35 @@
 {
   "name": "searchonair-lawyer",
-  "version": "1.0.0",
-  "description": "Yargıtay, Danıştay, UYAP emsal ve Anayasa Mahkemesi kararlarında (11M+) anlamsal ve lafzi arama, tam metin okuma ve künyeli atıflı cevaplar. Search on Air token'ı gerekir.",
+  "version": "1.0.1",
+  "description": "Semantic and keyword search over 11M+ Turkish court decisions (Court of Cassation, Council of State, regional and first-instance courts, Constitutional Court), full-text reading and answers with exact case citations. Requires a Search on Air token.",
   "author": {
     "name": "NorthRAG",
     "url": "https://searchonair.com"
   },
   "homepage": "https://searchonair.com/install/lawyer",
-  "repository": "https://github.com/NorthRAG/searchonair-plugins",
+  "repository": "https://github.com/SearchOnAir/plugins",
   "keywords": [
-    "hukuk",
-    "içtihat",
-    "yargıtay",
-    "danıştay",
-    "anayasa mahkemesi",
-    "türkçe",
+    "law",
+    "legal research",
+    "case law",
+    "turkey",
+    "turkish",
+    "court decisions",
     "rag"
   ],
   "skills": "./skills/",
   "mcpServers": "./codex.mcp.json",
   "interface": {
-    "displayName": "Search on Air: Hukuk",
-    "shortDescription": "Türk mahkeme kararlarında arama ve künyeli atıf",
-    "longDescription": "Yargıtay, Danıştay, UYAP emsal ve Anayasa Mahkemesi kararlarında (11M+) anlamsal ve lafzi arama, tam metin okuma ve künyeli atıflı cevaplar. Search on Air token'ı gerekir.",
+    "displayName": "Search on Air: Turkish Law",
+    "shortDescription": "Search Turkish court decisions and cite them precisely",
+    "longDescription": "Semantic and keyword search over 11M+ Turkish court decisions (Court of Cassation, Council of State, regional and first-instance courts, Constitutional Court), full-text reading and answers with exact case citations. Requires a Search on Air token.",
     "developerName": "NorthRAG",
     "category": "Research",
-    "websiteURL": "https://searchonair.com"
+    "websiteURL": "https://searchonair.com",
+    "defaultPrompt": [
+      "Can an employee who resigns over unpaid wages claim severance pay?",
+      "Find Court of Cassation decisions on rent adjustment cases.",
+      "What has the Constitutional Court said about length of proceedings?"
+    ]
   }
 }

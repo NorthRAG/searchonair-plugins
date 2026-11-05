@@ -12,7 +12,8 @@ ROOT = pathlib.Path(__file__).resolve().parent.parent
 API = "https://api.searchonair.com"
 SITE = "https://searchonair.com"
 REPO = "https://github.com/SearchOnAir/plugins"
-VERSION = "1.0.2"
+VERSION = "1.0.3"
+LICENSE = "Apache-2.0"
 OWNER = {"name": "Search on Air", "url": SITE}
 
 DOMAINS = {
@@ -72,7 +73,7 @@ for slug, d in DOMAINS.items():
     dump(base / ".claude-plugin" / "plugin.json", {
         "name": name, "version": VERSION, "description": d["desc"],
         "author": OWNER, "homepage": f"{SITE}/install/{slug}", "repository": REPO,
-        "keywords": d["keywords"],
+        "license": LICENSE, "keywords": d["keywords"],
         "userConfig": {"api_token": {
             "type": "string", "title": "Search on Air token",
             "description": (f"Your {d['title']} token (starts with soa_). Get one at "
@@ -86,7 +87,7 @@ for slug, d in DOMAINS.items():
     dump(base / ".codex-plugin" / "plugin.json", {
         "name": name, "version": VERSION, "description": d["desc"],
         "author": {"name": OWNER["name"], "url": SITE}, "homepage": f"{SITE}/install/{slug}",
-        "repository": REPO, "keywords": d["keywords"],
+        "repository": REPO, "license": LICENSE, "keywords": d["keywords"],
         "skills": "./skills/", "mcpServers": "./codex.mcp.json",
         "interface": {"displayName": d["display"], "shortDescription": d["short"],
                       "longDescription": d["desc"], "developerName": OWNER["name"],

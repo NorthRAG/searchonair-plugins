@@ -75,6 +75,10 @@ Queries and questions sent through the tools go to the Search on Air API and are
 measure service quality. Do not put personal data, patient information or privileged client
 information into queries.
 
+## License
+
+Copyright 2026 Search on Air. Licensed under the [Apache License 2.0](LICENSE).
+
 ## Development
 
 The manifests are generated from a single source. Do not edit the JSON files by hand; change

@@ -1,6 +1,6 @@
 {
   "name": "searchonair-health",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Search Turkish health legislation, the Social Security Institution's Health Implementation Communiqué (SUT), patient-rights regulations and official public health guidance, with answers that cite the exact article. Not medical advice. Requires a Search on Air token.",
   "author": {
     "name": "Search on Air",
@@ -8,6 +8,7 @@
   },
   "homepage": "https://searchonair.com/install/health",
   "repository": "https://github.com/SearchOnAir/plugins",
+  "license": "Apache-2.0",
   "keywords": [
     "health",
     "healthcare regulation",

@@ -1,6 +1,6 @@
 {
   "name": "searchonair-lawyer",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Semantic and keyword search over 11M+ Turkish court decisions (Court of Cassation, Council of State, regional and first-instance courts, Constitutional Court), full-text reading and answers with exact case citations. Requires a Search on Air token.",
   "author": {
     "name": "Search on Air",
@@ -8,6 +8,7 @@
   },
   "homepage": "https://searchonair.com/install/lawyer",
   "repository": "https://github.com/SearchOnAir/plugins",
+  "license": "Apache-2.0",
   "keywords": [
     "law",
     "legal research",

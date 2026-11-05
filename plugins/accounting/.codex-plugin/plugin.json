@@ -1,6 +1,6 @@
 {
   "name": "searchonair-accounting",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Search Turkish tax laws, Revenue Administration (GİB) communiqués, circulars and rulings, and accounting standards; read full texts and get answers that cite the exact article. Requires a Search on Air token.",
   "author": {
     "name": "Search on Air",
@@ -8,6 +8,7 @@
   },
   "homepage": "https://searchonair.com/install/accounting",
   "repository": "https://github.com/SearchOnAir/plugins",
+  "license": "Apache-2.0",
   "keywords": [
     "accounting",
     "tax",
